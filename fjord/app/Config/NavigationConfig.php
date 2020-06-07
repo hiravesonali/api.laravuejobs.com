@@ -42,16 +42,17 @@ class NavigationConfig extends Config
     public function main(Navigation $nav)
     {
         $nav->section([
-            $nav->title('Pages'),
+            $nav->title('LaraVueJobs'),
 
-            $nav->group([
-                'title' => 'Pages',
-                'icon' => fa('file'),
-            ], [
-                $nav->preset('pages.home', [
-                    'icon' => fa('home'),
-                ]),
-            ])
+            $nav->preset('pages.home', [
+                'title' => 'Dashboard',
+                'icon' => fa('home'),
+            ]),
+
+            $nav->preset('crud.companies', [
+                'title' => 'Companies',
+                'icon' => fa('building'),
+            ]),
         ]);
     }
 }

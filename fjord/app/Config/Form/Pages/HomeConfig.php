@@ -2,8 +2,11 @@
 
 namespace FjordApp\Config\Form\Pages;
 
+use App\Models\Company;
 use Fjord\Crud\CrudForm;
 use App\Models\Department;
+use App\Models\Job;
+use App\Models\Location;
 use Fjord\Crud\Config\FormConfig;
 use Fjord\Vue\Crud\RelationTable;
 use Fjord\Crud\Config\Traits\HasCrudForm;
@@ -36,7 +39,7 @@ class HomeConfig extends FormConfig
     public function names()
     {
         return [
-            'singular' => 'Home'
+            'singular' => 'Dashboard'
         ];
     }
 
@@ -49,11 +52,27 @@ class HomeConfig extends FormConfig
     public function form(CrudForm $form)
     {
         $form->card(function ($form) {
+            $form->input('length')
+            ->title('Numbers')
+            ->placeholder(Job::count());
+        })
+        ->width(6)
+        ->title('Jobs');
 
-            $form->input('title')
-                ->title('Title');
+        $form->card(function ($form) {
+            $form->input('length')
+            ->title('Numbers')
+            ->placeholder(Company::count());
+        })
+        ->width(6)
+        ->title('Companies');
 
-            $form->markdown(\Illuminate\Support\Facades\File::get(fjord_path('resources/docs/form-loader-example.md')));
-        });
+        $form->card(function ($form) {
+            $form->input('length')
+            ->title('Numbers')
+            ->placeholder(Location::count());
+        })
+        ->width(6)
+        ->title('Locations');
     }
 }
