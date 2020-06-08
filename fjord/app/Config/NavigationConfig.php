@@ -53,6 +53,11 @@ class NavigationConfig extends Config
                 'title' => 'Companies',
                 'icon' => fa('building'),
             ]),
+
+            $nav->preset('crud.jobs', [
+                'title' => 'Jobs',
+                'icon' => fa('user'),
+            ]),
         ]);
     }
 }
