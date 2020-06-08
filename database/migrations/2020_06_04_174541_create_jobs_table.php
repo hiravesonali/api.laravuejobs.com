@@ -16,10 +16,10 @@ class CreateJobsTable extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('company_id')->nullable();
             $table->enum('type', ['full time', 'part time', 'both'])->default('full time');
             $table->boolean('is_remote')->default(false);
-            $table->unsignedBigInteger('location_id');
+            $table->unsignedBigInteger('location_id')->nullable();
             $table->string('contact_person')->nullable();
             $table->string('contact_person_email')->nullable();
             $table->string('apply_url');

@@ -139,6 +139,10 @@ class CompanyConfig extends CrudConfig
         $form->input('name')
                 ->title('Name')
                 ->width(6);
+        
+        $form->input('slug')
+                ->title('Slug')
+                ->width(6);
 
         $form->input('website')
                 ->title('Website')

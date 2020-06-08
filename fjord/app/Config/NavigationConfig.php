@@ -58,6 +58,11 @@ class NavigationConfig extends Config
                 'title' => 'Jobs',
                 'icon' => fa('user'),
             ]),
+
+            $nav->preset('crud.locations', [
+                'title' => 'Locations',
+                'icon' => fa('globe'),
+            ]),
         ]);
     }
 }

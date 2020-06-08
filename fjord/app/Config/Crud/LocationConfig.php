@@ -2,39 +2,37 @@
 
 namespace FjordApp\Config\Crud;
 
-use App\Models\Company;
 use Fjord\Crud\CrudForm;
 use Fjord\Vue\Crud\CrudTable;
 use Fjord\Crud\Config\CrudConfig;
 use Fjord\Crud\Fields\Blocks\Repeatables;
 use Illuminate\Database\Eloquent\Builder;
 
-use App\Models\Job;
 use App\Models\Location;
-use FjordApp\Controllers\Crud\JobController;
+use FjordApp\Controllers\Crud\LocationController;
 
-class JobConfig extends CrudConfig
+class LocationConfig extends CrudConfig
 {
     /**
      * Model class.
      *
      * @var string
      */
-    public $model = Job::class;
+    public $model = Location::class;
 
     /**
      * Controller class.
      *
      * @var string
      */
-    public $controller = JobController::class;
+    public $controller = LocationController::class;
 
     /**
      * Index table search keys.
      *
      * @var array
      */
-    public $search = ['title'];
+    public $search = ['name'];
 
     /**
      * Index table sort by default.
@@ -51,8 +49,8 @@ class JobConfig extends CrudConfig
     public function names()
     {
         return [
-            'singular' => 'Job',
-            'plural' => 'Jobs',
+            'singular' => 'Location',
+            'plural' => 'Locations',
         ];
     }
 
@@ -107,9 +105,7 @@ class JobConfig extends CrudConfig
      */
     public function index(CrudTable $table)
     {
-        $table->col('Title')->value('{title}')->sortBy('title');
-        $table->col('position_type')->value('{position_type}')->sortBy('position_type');
-        $table->col('salary')->value('{salary}')->sortBy('salary');
+        $table->col('Name')->value('{name}')->sortBy('name');
     }
 
     /**
@@ -137,53 +133,8 @@ class JobConfig extends CrudConfig
      */
     protected function mainCard(CrudForm $form)
     {
-        $form->input('title')
-                ->title('Title')
+        $form->input('name')
+                ->title('Name')
                 ->width(6);
-
-        $form->checkboxes('type')
-                ->title('Position type')
-                ->options([
-                    'full time' => 'Full time',
-                    'part time' => 'Part time',
-                    'both' => 'Both',
-                ])
-                ->width(6);
-
-        $form->boolean('active')
-                ->title('Is Remote')
-                ->width(6);
-
-        $form->input('contact_person')
-                ->title('Contact person')
-                ->width(6);
-
-        $form->input('contact_person_email')
-                ->title('Contact person email')
-                ->width(6);
-
-        $form->input('apply_url')
-                ->title('Apply URL')
-                ->width(6);
-
-        $form->input('salary')
-                ->title('Salary')
-                ->width(6);
-
-        $form->datetime('published_at')
-                ->title('Published at')
-                ->width(6);
-
-        $form->wysiwyg('description')
-                ->title('Description');
-
-
-        $form->relation('company')
-                ->title('Company')
-                ->model(Company::class);
-
-        $form->relation('location')
-                ->title('Location')
-                ->model(Location::class);
     }
 }

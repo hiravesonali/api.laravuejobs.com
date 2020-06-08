@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Job extends Model
 {
-    protected $fillable = ['title', 'company_id', 'position_type', 'is_remote', 'contact_person', 'contact_person_email',
+    protected $fillable = ['title', 'company_id', 'location_id', 'position_type', 'is_remote', 'contact_person', 'contact_person_email',
     'apply_url', 'salary', 'description', 'published_at'];
 
     protected $casts = [
