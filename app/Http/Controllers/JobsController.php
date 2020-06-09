@@ -10,20 +10,33 @@ use App\Http\Resources\Job as JobResource;
 
 class JobsController extends Controller
 {
+    /**
+     * Get the list of jobs
+     *
+     * @return collection
+     */
     public function index()
     {
         $jobs = Job::with('company')
             ->with('location')
+            ->with('tags')
             ->paginate();
 
         return new JobCollection($jobs);
     }
 
+    /**
+     * Job details of specific job by slug
+     *
+     * @param string $slug
+     * @return void
+     */
     public function details($slug)
     {
         $job = Job::where('slug', $slug)
             ->with('company')
             ->with('location')
+            ->with('tags')
             ->first();
 
         if (!$job) {
