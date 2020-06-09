@@ -18,12 +18,12 @@ class CreateJobsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->unsignedBigInteger('company_id');
-            $table->enum('type', ['full time', 'part time', 'both'])->default('full time');
+            $table->enum('type', ['full time', 'part time', 'full time/part time'])->default('full time');
             $table->boolean('is_remote')->default(false);
             $table->unsignedBigInteger('location_id');
             $table->string('contact_person')->nullable();
             $table->string('contact_person_email')->nullable();
-            $table->string('apply_url');
+            $table->string('apply_url')->nullable();
             $table->string('salary')->nullable();
             $table->text('description');
             $table->dateTime('published_at');

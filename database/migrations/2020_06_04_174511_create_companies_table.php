@@ -17,10 +17,10 @@ class CreateCompaniesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->string('website');
+            $table->string('website')->nullable();
             $table->string('twitter_handle', 100)->nullable();
             $table->string('email')->nullable();
-            $table->string('apply_url', 1000);
+            $table->string('apply_url', 1000)->nullable();
             $table->text('about');
             $table->string('logo', 1000)->nullable();
             $table->timestamps();

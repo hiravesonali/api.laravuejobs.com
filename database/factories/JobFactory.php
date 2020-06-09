@@ -12,7 +12,7 @@ $factory->define(Job::class, function (Faker $faker) {
         'title' => $faker->jobTitle,
         'slug' => $faker->slug,
         'company_id' => factory(Company::class)->create()->id,
-        'type' => $faker->randomElement(['full time', 'part time', 'both']),
+        'type' => $faker->randomElement(['full time', 'part time', 'full time/part time']),
         'is_remote' => $faker->boolean,
         'location_id' => factory(Location::class)->create()->id,
         'contact_person' => $faker->name,
