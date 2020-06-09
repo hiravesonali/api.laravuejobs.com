@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Tags\HasTags;
 
 class Job extends Model
 {
+    use HasTags;
+
     protected $casts = [
         'published_at' => 'datetime',
     ];

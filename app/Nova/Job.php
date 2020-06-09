@@ -8,8 +8,9 @@ use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Trix;
+use Spatie\TagsField\Tags;
 
 class Job extends Resource
 {
@@ -63,6 +64,8 @@ class Job extends Resource
             BelongsTo::make('Location')
                 ->sortable(),
 
+            Tags::make('Tags'),
+
             Select::make('Type')
                 ->options([
                     'full time' => 'Full Time',
@@ -85,7 +88,7 @@ class Job extends Resource
             Text::make('Salary')
                 ->hideFromIndex(),
 
-            Textarea::make('Description')
+            Trix::make('Description')
                 ->hideFromIndex(),
 
             DateTime::make('Published at'),

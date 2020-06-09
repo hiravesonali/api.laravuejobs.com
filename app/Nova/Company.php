@@ -5,8 +5,8 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Trix;
 
 class Company extends Resource
 {
@@ -66,10 +66,10 @@ class Company extends Resource
             Text::make('Apply url')
                 ->hideFromIndex(),
 
-            Textarea::make('About')
+            Trix::make('About')
                 ->hideFromIndex(),
 
-            Image::make('Logo'),
+            Image::make('Logo')->disk('public'),
         ];
     }
 
