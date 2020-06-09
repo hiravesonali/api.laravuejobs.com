@@ -10,6 +10,7 @@ use Faker\Generator as Faker;
 $factory->define(Job::class, function (Faker $faker) {
     return [
         'title' => $faker->jobTitle,
+        'slug' => $faker->slug,
         'company_id' => factory(Company::class)->create()->id,
         'type' => $faker->randomElement(['full time', 'part time', 'both']),
         'is_remote' => $faker->boolean,

@@ -16,6 +16,7 @@ class CreateJobsTable extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug');
             $table->unsignedBigInteger('company_id');
             $table->enum('type', ['full time', 'part time', 'both'])->default('full time');
             $table->boolean('is_remote')->default(false);
