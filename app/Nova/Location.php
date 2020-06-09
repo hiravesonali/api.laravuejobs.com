@@ -2,6 +2,8 @@
 
 namespace App\Nova;
 
+use Benjaminhirsch\NovaSlugField\Slug;
+use Benjaminhirsch\NovaSlugField\TextWithSlug;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
@@ -44,11 +46,12 @@ class Location extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make('Name')
+            TextWithSlug::make('Name')
                 ->sortable()
+                ->slug('slug')
                 ->rules('required', 'max:255'),
 
-            Text::make('Slug')
+            Slug::make('Slug')
                 ->sortable()
                 ->rules('required', 'max:254')
                 ->creationRules('unique:locations,slug')

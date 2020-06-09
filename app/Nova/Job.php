@@ -2,6 +2,8 @@
 
 namespace App\Nova;
 
+use Benjaminhirsch\NovaSlugField\Slug;
+use Benjaminhirsch\NovaSlugField\TextWithSlug;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
@@ -48,11 +50,12 @@ class Job extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make('Title')
+            TextWithSlug::make('Title')
                 ->sortable()
+                ->slug('slug')
                 ->rules('required', 'max:255'),
 
-            Text::make('Slug')
+            Slug::make('Slug')
                 ->hideFromIndex()
                 ->rules('required', 'max:254')
                 ->creationRules('unique:jobs,slug')
