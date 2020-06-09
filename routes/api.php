@@ -7,3 +7,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('jobs', 'JobsController@index');
+
+
+Route::get('jobs/{slug}', 'JobsController@details');
